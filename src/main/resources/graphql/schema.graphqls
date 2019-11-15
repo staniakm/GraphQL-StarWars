@@ -1,10 +1,23 @@
 type Person {
     id: ID!
-    name: String
+    name: String!
+    gender: String
+    films: [Film]
+}
+
+type Film {
+    id: ID!
+    title: String!
+    releaseDate: String
+    director: String
+    characters: [Person]
 }
 
 type Query {
     allPersons: [Person!]
+    allFilms: [Film!]
+    personByName(name:String!): [Person!]
+    filmsWithCharacter(characterName:String!): [Film!]
 }
 
 schema {
