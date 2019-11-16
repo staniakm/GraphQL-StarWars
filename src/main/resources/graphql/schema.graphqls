@@ -2,6 +2,7 @@ type Person {
     id: ID!
     name: String!
     gender: String
+    species: Species
     films: [Film]
 }
 
@@ -13,11 +14,19 @@ type Film {
     characters: [Person]
 }
 
+type Species {
+    name: String!
+    language: String
+}
+
 type Query {
     allPersons: [Person!]
     allFilms: [Film!]
-    personByName(name:String!): [Person!]
+    allSpecies: [Species!]
+
+    personByName(name:String!): Person
     filmsWithCharacter(characterName:String!): [Film!]
+    speciesByName(name: String!) : Species
 }
 
 schema {

@@ -1,5 +1,6 @@
 package com.sw.universe.person
 
+import com.sw.universe.species.Species
 import com.sw.universe.film.Film
 import javax.persistence.*
 
@@ -9,6 +10,10 @@ class Person(
 
         @Enumerated(EnumType.STRING)
         val gender: Gender,
+
+        @ManyToOne
+        @JoinColumn(name = "species", referencedColumnName = "name")
+        val species: Species,
 
         @ManyToMany(cascade = [CascadeType.PERSIST, CascadeType.MERGE])
         val films: MutableSet<Film> = mutableSetOf(),
