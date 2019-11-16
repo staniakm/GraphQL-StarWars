@@ -1,9 +1,15 @@
+enum Gender {
+    UNKNOWN,
+    MALE,
+    FEMALE,
+    HERMAPHRODITE
+}
 type Person {
     id: ID!
     name: String!
-    gender: String
+    gender: Gender
     species: Species
-    films: [Film]
+    personFilms: [Film]
 }
 
 type Film {
