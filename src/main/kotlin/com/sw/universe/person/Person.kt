@@ -16,6 +16,8 @@ class Person(
         val species: Species,
 
         @ManyToMany(cascade = [CascadeType.PERSIST, CascadeType.MERGE])
+        @JoinTable(name = "PERSON_FILM", joinColumns = [JoinColumn(name = "person_id")],
+                inverseJoinColumns = [JoinColumn(name = "film_id")])
         val films: MutableSet<Film> = mutableSetOf(),
 
         @Id
