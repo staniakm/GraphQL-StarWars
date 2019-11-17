@@ -9,4 +9,7 @@ import java.util.*
 interface PersonRepository : JpaRepository<Person, Long> {
 
     fun findByName(name: String): Optional<Person>
+
+    @Query("select p from Film f join f.characters p where f.id = :filmId")
+    fun findByFilmId(filmId: Long): Set<Person>
 }

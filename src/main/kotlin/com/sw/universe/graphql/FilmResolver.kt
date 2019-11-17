@@ -4,12 +4,13 @@ import com.coxautodev.graphql.tools.GraphQLResolver
 import com.sw.universe.film.Film
 import com.sw.universe.film.FilmService
 import com.sw.universe.person.Person
+import com.sw.universe.person.PersonService
 import org.springframework.stereotype.Component
 
 @Component
-class PersonResolver(private val filmService: FilmService) : GraphQLResolver<Person> {
+class FilmResolver(private val personService: PersonService) : GraphQLResolver<Film> {
 
-    fun personFilms(person: Person): Set<Film> {
-        return filmService.findAllByPerson(person)
+    fun filmCharacters(film: Film): Set<Person> {
+        return personService.getCharactersByFilm(film)
     }
 }

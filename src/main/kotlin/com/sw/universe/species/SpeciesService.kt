@@ -1,6 +1,5 @@
 package com.sw.universe.species
 
-import com.sw.universe.Species.SpeciesRepository
 import org.springframework.stereotype.Service
 import java.util.*
 

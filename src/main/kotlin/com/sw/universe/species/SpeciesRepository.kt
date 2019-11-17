@@ -1,4 +1,4 @@
-package com.sw.universe.Species
+package com.sw.universe.species
 
 import com.sw.universe.species.Species
 import org.springframework.data.jpa.repository.JpaRepository
