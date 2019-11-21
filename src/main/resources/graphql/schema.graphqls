@@ -30,7 +30,7 @@ type Species {
 
 type Query {
     "Fetch all Star Wars characters"
-    allPersons: [Person!]
+    allPersons(page:Int=0, size:Int=3): [Person!]
     "Fetch all Star Wars universum movies"
     allFilms: [Film!]
     "Fetch all species from Star Wars universum"

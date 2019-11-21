@@ -3,11 +3,13 @@ package com.sw.universe.graphql
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
 import com.sw.universe.exception.CustomException
 import com.sw.universe.film.FilmService
+import com.sw.universe.person.Person
 import com.sw.universe.person.PersonService
 import com.sw.universe.species.Species
 import com.sw.universe.species.SpeciesService
 import org.apache.commons.lang3.StringUtils.isBlank
 import org.apache.commons.lang3.StringUtils.isNotBlank
+import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Component
 import java.util.*
 
@@ -15,7 +17,10 @@ import java.util.*
 @Component
 class Query(val personService: PersonService, val filmService: FilmService, val speciesService: SpeciesService) : GraphQLQueryResolver {
 
-    fun allPersons() = personService.getAllPersons()
+    fun allPersons(page:Int, size:Int) :List<Person>{
+        val pagable = PageRequest.of(page, size)
+        return personService.getAllPersons(pagable)  
+    } 
     fun personByName(name: String) = personService.personByName(name)
 
     fun allFilms() = filmService.getAllFilms()
