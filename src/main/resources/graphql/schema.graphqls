@@ -15,24 +15,33 @@ type Person {
 type Film {
     id: ID!
     title: String!
+    "Film release date"
     releaseDate: String
+    "Film director"
     director: String
     filmCharacters: [Person]
 }
 
 type Species {
+    id:ID!
     name: String!
     language: String
 }
 
 type Query {
+    "Fetch all Star Wars characters"
     allPersons: [Person!]
+    "Fetch all Star Wars universum movies"
     allFilms: [Film!]
+    "Fetch all species from Star Wars universum"
     allSpecies: [Species!]
 
+    "Find specific Star Wars character by its name"
     personByName(name:String!): Person
+    "Fetch all movies where character with given name plays"
     filmsWithCharacter(characterName:String!): [Film!]
-    speciesByName(name: String!) : Species
+    "Find single species by its name or ID"
+    speciesBy(id:ID=0, name:String=""):Species
 }
 
 schema {

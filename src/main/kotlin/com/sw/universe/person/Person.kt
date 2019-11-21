@@ -12,7 +12,7 @@ class Person(
         val gender: Gender,
 
         @ManyToOne
-        @JoinColumn(name = "species", referencedColumnName = "name")
+        @JoinColumn(name = "species", referencedColumnName = "id")
         val species: Species,
 
         @ManyToMany(cascade = [CascadeType.PERSIST, CascadeType.MERGE])
