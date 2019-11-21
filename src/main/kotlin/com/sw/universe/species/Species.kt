@@ -7,9 +7,11 @@ import javax.persistence.Id
 
 @Entity
 class Species(
+        val name: String,
+
+        val language: String,
+
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        
-        val id: Long? = null,
-        val name: String, 
-        val language: String)
+        val id: Long? = null
+)

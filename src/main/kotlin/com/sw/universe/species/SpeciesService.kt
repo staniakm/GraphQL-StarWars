@@ -12,4 +12,6 @@ class SpeciesService(val speciesRepository: SpeciesRepository) {
     fun speciesById(id: Long) = speciesRepository.findById(id)
     fun speciesBy(id: Long, name: String): Optional<Species> = speciesRepository.findByIdAndName(id, name)
 
+    fun save(species: Species) = speciesRepository.save(species)
+
 }

@@ -13,4 +13,7 @@ class PersonService(val personRepository: PersonRepository) {
     fun personByName(name: String): Optional<Person> = personRepository.findByName(name)
 
     fun getCharactersByFilm(film: Film): Set<Person> = personRepository.findByFilmId(film.id!!)
+
+    fun save(person: Person): Person = personRepository.save(person)
+
 }
