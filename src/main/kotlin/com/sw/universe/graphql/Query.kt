@@ -18,8 +18,8 @@ import java.util.*
 class Query(val personService: PersonService, val filmService: FilmService, val speciesService: SpeciesService) : GraphQLQueryResolver {
 
     fun allPersons(page:Int, size:Int) :List<Person>{
-        val pagable = PageRequest.of(page, size)
-        return personService.getAllPersons(pagable)  
+        val pageable = PageRequest.of(page, size)
+        return personService.getAllPersons(pageable)  
     } 
     fun personByName(name: String) = personService.personByName(name)
 

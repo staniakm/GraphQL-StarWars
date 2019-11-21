@@ -6,11 +6,11 @@ insert into FILM(ID, DIRECTOR, RELEASE_DATE, TITLE) values (2, 'Irvin Kershner',
 insert into FILM(ID, DIRECTOR, RELEASE_DATE, TITLE) values (3, 'Richard Marquand', '1983-05-25', 'Return of the Jedi');
 insert into FILM(ID, DIRECTOR, RELEASE_DATE, TITLE) values (4, 'George Lucas', '1999-05-19', 'The Phantom Menace');
 
-insert into PERSON(ID, NAME, GENDER, SPECIES) values(1,	'Luke Skywalker','MALE',1);
-insert into PERSON(ID, NAME, GENDER, SPECIES) values(2,	'C-3PO','UNKNOWN',2);
-insert into PERSON(ID, NAME, GENDER, SPECIES) values(3,	'R2-D2','UNKNOWN',2);
-insert into PERSON(ID, NAME, GENDER, SPECIES) values(4,	'Darth Vader','MALE',1);
-insert into PERSON(ID, NAME, GENDER, SPECIES) values(5,	'Leia Organa','FEMALE',1);
+insert into PERSON(ID, NAME, GENDER, SPECIES_ID) values(1,	'Luke Skywalker','MALE',1);
+insert into PERSON(ID, NAME, GENDER, SPECIES_ID) values(2,	'C-3PO','UNKNOWN',2);
+insert into PERSON(ID, NAME, GENDER, SPECIES_ID) values(3,	'R2-D2','UNKNOWN',2);
+insert into PERSON(ID, NAME, GENDER, SPECIES_ID) values(4,	'Darth Vader','MALE',1);
+insert into PERSON(ID, NAME, GENDER, SPECIES_ID) values(5,	'Leia Organa','FEMALE',1);
 
 insert into PERSON_FILM(PERSON_ID, FILM_ID) values(1,1);
 insert into PERSON_FILM(PERSON_ID, FILM_ID) values(1,2);
