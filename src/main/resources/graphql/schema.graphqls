@@ -17,7 +17,7 @@ type Film {
     title: String!
     releaseDate: String
     director: String
-    characters: [Person]
+    filmCharacters: [Person]
 }
 
 type Species {
