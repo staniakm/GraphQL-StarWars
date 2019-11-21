@@ -9,7 +9,7 @@ type Person {
     name: String!
     gender: Gender
     species: Species
-    personFilms: [Film]
+    personFilms(first:Int=10): [Film]
 }
 
 type Film {
@@ -41,7 +41,7 @@ type Query {
     "Fetch all movies where character with given name plays"
     filmsWithCharacter(characterName:String!): [Film!]
     "Find single species by its name or ID"
-    speciesBy(id:ID=0, name:String=""):Species
+    speciesBy(id:ID, name:String=""):Species
 }
 
 schema {
