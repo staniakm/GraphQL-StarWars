@@ -43,8 +43,10 @@ type Query {
     "Fetch all movies where character with given name plays"
     filmsWithCharacter(characterName:String!): [Film!]
     "Find single species by its name or ID"
-    speciesBy(id:ID, name:String=""):Species
+    speciesBy(id:ID, name:String=""): Species
 }
+
+# mutation
 
 input SpeciesInput {
     name: String!
@@ -64,13 +66,30 @@ input PersonInput {
 }
 
 type Mutation {
-    addSpecies(name: String!, language: String) : Species
+    "add species providing name na (optional) language"
+    addSpecies(name: String!, language: String): Species
 
-    addPerson(name: String!, gender: Gender, speciesName: String) : Person
+    "add person providing name, gender and existing species name"
+    addPerson(name: String!, gender: Gender, speciesName: String): Person
 
-#    updatePerson(name: String, persoInput: PersonInput) : Person
+    "add person using person input"
+    addPersonWithInput(personInput: PersonInput): Person
+}
+
+# subscription
+
+type Rating {
+    title: String!
+    score: Int
+}
+
+type Subscription {
+    "returns stream of ratings for given film"
+    filmRatings(title: String!): Rating
 }
 
 schema {
     query: Query
+    mutation: Mutation
+    subscription: Subscription
 }

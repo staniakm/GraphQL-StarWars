@@ -11,7 +11,7 @@ class Person(
         @Enumerated(EnumType.STRING)
         val gender: Gender,
 
-        @ManyToOne
+        @ManyToOne(cascade = [CascadeType.PERSIST, CascadeType.MERGE])
         @JoinColumn(name = "species_id", referencedColumnName = "id")
         val species: Species,
 
