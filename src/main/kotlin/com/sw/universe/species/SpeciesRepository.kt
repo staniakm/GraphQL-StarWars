@@ -10,4 +10,5 @@ interface SpeciesRepository : JpaRepository<Species, Long> {
 
     fun findByName(name: String): Optional<Species>
 
+    fun findByIdAndName(id:Long, name:String):Optional<Species>
 }
