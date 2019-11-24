@@ -17,10 +17,11 @@ import java.util.*
 @Component
 class Query(val personService: PersonService, val filmService: FilmService, val speciesService: SpeciesService) : GraphQLQueryResolver {
 
-    fun allPersons(page:Int, size:Int) :List<Person>{
+    fun allPersons(page: Int, size: Int): List<Person> {
         val pageable = PageRequest.of(page, size)
-        return personService.getAllPersons(pageable)  
-    } 
+        return personService.getAllPersons(pageable)
+    }
+
     fun personByName(name: String) = personService.personByName(name)
 
     fun allFilms() = filmService.getAllFilms()

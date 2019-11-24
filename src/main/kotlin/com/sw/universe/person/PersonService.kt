@@ -8,13 +8,9 @@ import java.util.*
 @Service
 class PersonService(val personRepository: PersonRepository) {
 
-    fun getAllPersons(pageable:Pageable): List<Person> {
-        return personRepository.findAll(pageable).content
-    } 
+    fun getAllPersons(pageable: Pageable): List<Person> = personRepository.findAll(pageable).content
 
     fun personByName(name: String): Optional<Person> = personRepository.findByName(name)
 
-    fun getCharactersByFilm(film: Film): Set<Person> {
-        return film.id!!.let { personRepository.findByFilmId(it) }
-    }
+    fun getCharactersByFilm(film: Film): Set<Person> = personRepository.findByFilmId(film.id!!)
 }
