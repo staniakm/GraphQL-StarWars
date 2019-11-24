@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component
 @Component
 class PersonResolver(private val filmService: FilmService) : GraphQLResolver<Person> {
 
-    fun personFilms(person: Person, limit:Int): Set<Film> {
-        
-        return filmService.findAllByPerson(person, PageRequest.of(0, limit))
-    }
+    fun personFilms(person: Person, limit: Int): Set<Film> = filmService.findAllByPerson(person, PageRequest.of(0, limit))
+
 }

@@ -29,6 +29,7 @@ type Species {
 }
 
 type Query {
+    # fetch all
     "Fetch all Star Wars characters"
     allPersons(page:Int=0, size:Int=3): [Person!]
     "Fetch all Star Wars universum movies"
@@ -36,12 +37,38 @@ type Query {
     "Fetch all species from Star Wars universum"
     allSpecies: [Species!]
 
+    # fetch by param
     "Find specific Star Wars character by its name"
     personByName(name:String!): Person
     "Fetch all movies where character with given name plays"
     filmsWithCharacter(characterName:String!): [Film!]
     "Find single species by its name or ID"
     speciesBy(id:ID, name:String=""):Species
+}
+
+input SpeciesInput {
+    name: String!
+    language: String
+}
+
+input FilmInput {
+    title: String!
+    releaseDate: String
+    director: String
+}
+
+input PersonInput {
+    name: String!
+    gender: Gender
+    speciesInput: SpeciesInput
+}
+
+type Mutation {
+    addSpecies(name: String!, language: String) : Species
+
+    addPerson(name: String!, gender: Gender, speciesName: String) : Person
+
+#    updatePerson(name: String, persoInput: PersonInput) : Person
 }
 
 schema {
