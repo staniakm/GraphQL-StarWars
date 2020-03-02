@@ -15,19 +15,21 @@ import java.util.*
 
 
 @Component
-class Query(val personService: PersonService, val filmService: FilmService, val speciesService: SpeciesService) : GraphQLQueryResolver {
+class Query(val personService: PersonService,
+            val filmService: FilmService,
+            val speciesService: SpeciesService) : GraphQLQueryResolver {
 
     fun allPersons(page: Int, size: Int): List<Person> {
         val pageable = PageRequest.of(page, size)
         return personService.getAllPersons(pageable)
     }
 
-    fun personByName(name: String) = personService.personByName(name)
-
     fun allFilms() = filmService.getAllFilms()
-    fun filmsWithCharacter(characterName: String) = filmService.filmsWithCharacter(characterName)
-
+ 
     fun allSpecies() = speciesService.getAllSpecies()
+    
+    fun personByName(name: String) = personService.personByName(name)
+    fun filmsWithCharacter(characterName: String) = filmService.filmsWithCharacter(characterName)
     fun speciesBy(id: Long, name: String): Optional<Species> {
         return if (id == 0L && isNotBlank(name)) {
             speciesService.speciesByName(name)
@@ -35,7 +37,8 @@ class Query(val personService: PersonService, val filmService: FilmService, val 
             speciesService.speciesById(id)
         } else if (id > 0 && isNotBlank(name)) {
             speciesService.speciesBy(id, name)
-        } else {
+        } 
+        else {
             throw CustomException(400, "ID or Name must not be empty")
         }
     }

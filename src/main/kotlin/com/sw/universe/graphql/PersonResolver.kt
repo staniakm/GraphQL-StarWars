@@ -10,6 +10,15 @@ import org.springframework.stereotype.Component
 @Component
 class PersonResolver(private val filmService: FilmService) : GraphQLResolver<Person> {
 
-    fun personFilms(person: Person, limit: Int): Set<Film> = filmService.findAllByPerson(person, PageRequest.of(0, limit))
+    //dynamic fields available in schema
+    fun personFilms(person: Person, limit: Int): Set<Film> =
+            filmService.findAllByPerson(person, PageRequest.of(0, limit))
 
+    fun surname(person: Person) : String? {
+        return null;
+    }
+
+    fun nameAndGender(person: Person):String{
+        return "${person.name} ${person.gender.name.toLowerCase()}"
+    }
 }

@@ -12,7 +12,8 @@ import javax.transaction.Transactional
 
 @Component
 @Transactional
-class Mutation(private val personService: PersonService, private val speciesService: SpeciesService) : GraphQLMutationResolver {
+class Mutation(private val personService: PersonService,
+               private val speciesService: SpeciesService) : GraphQLMutationResolver {
 
     fun addSpecies(name: String, language: String) = speciesService.save(Species(name, language))
 
@@ -31,14 +32,16 @@ class Mutation(private val personService: PersonService, private val speciesServ
         return personService.save(Person(name, gender, speciesFromRepo.get()))
     }
 
-    fun addPersonWithInput(personInput: PersonInput): Person {
+    fun addPersonWithInput(personInput: PersonInput) :Person {
         if (personService.personByName(personInput.name).isPresent) {
             throw CustomException(400, "Person with ${personInput.name} already exists in database")
         }
 
-
-        return personService.save(Person(personInput.name, personInput.gender,
+        val person =  personService.save(Person(personInput.name, personInput.gender,
                 Species(personInput.speciesInput.name, personInput.speciesInput.language)))
+    return person
     }
-
 }
+
+class PersonInput (val name: String, val gender: Gender, val speciesInput: SpeciesInput)
+

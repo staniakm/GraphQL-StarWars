@@ -23,14 +23,4 @@ class Person(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null
-) {
-
-    fun addFilms(vararg film: Film) {
-        film.forEach {
-            films.add(it)
-            it.characters.add(this)
-        }
-    }
-
-    fun getFilms(): List<Film> = films.sortedWith(compareBy { it.title })
-}
+)
